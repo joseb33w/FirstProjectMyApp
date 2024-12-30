@@ -1,0 +1,31 @@
+import sqlite3
+import streamlit as st
+
+# Function to retrieve location from database
+def get_location_from_db(location_name):
+    conn = sqlite3.connect("locations.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT latitude, longitude FROM locations WHERE name = ?", (location_name,))
+    result = cursor.fetchone()
+    conn.close()
+    if result:
+        return result[0], result[1]
+    return None, None
+
+# Streamlit app
+st.title("Location Finder with Inflation Data")
+
+# Search bar for user input
+location_name = st.text_input("Search for a location:")
+
+if location_name:
+    latitude, longitude = get_location_from_db(location_name)
+    if latitude and longitude:
+        st.write(f"**Latitude:** {latitude}")
+        st.write(f"**Longitude:** {longitude}")
+
+        # Example: Display placeholder inflation data
+        st.write("### Inflation Data")
+        st.write(f"Inflation for {location_name} is approximately **2.5% annually**.")
+    else:
+        st.write("Location not found in the database.")
