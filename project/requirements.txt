@@ -1,5 +1,0 @@
-streamlit==1.26.0  # Use the version you're working with
-pandas==1.5.3      # For data manipulation
-requests==2.28.2   # For API calls
-geopy==2.4.1       # For geolocation and coordinate calculations
-matplotlib==3.6.2  # For plotting inflation data
