@@ -4,27 +4,35 @@ import streamlit as st
 def main():
     st.title("Growth & Preservation")
     st.subheader("Investments")
-    st.write("Here are your individual investments and their returns since purchase:")
 
-    # Example investment categories from 'Current Retirement'
+    # Example investment categories for growth and preservation
     investment_options = {
-        "401(k)": "A retirement savings plan sponsored by an employer with tax advantages.",
-        "IRA": "Individual Retirement Account offering tax benefits for retirement savings.",
         "Stocks": "Invest in publicly traded companies for growth.",
         "Bonds": "Fixed-income investments for preservation.",
+        "Real Estate": "Invest in properties for both growth and preservation.",
         "Mutual Funds": "Pooled investments managed professionally.",
-        "Savings Accounts": "Low-risk accounts for preserving capital."
+        "ETFs": "Diversified funds for balanced growth and preservation.",
+        "Cryptocurrency": "High-risk, high-reward digital assets.",
+        "Commodities": "Physical goods like gold and oil for stability.",
+        "Savings Accounts": "Low-risk accounts for preserving capital.",
+        "Index Funds": "Passive investment strategies for long-term growth.",
+        "Startups & Private Equity": "Invest in early-stage companies."
     }
 
-    # Display investment categories in a grid with better alignment
-    cols = st.columns(2)
+    # Display investment categories in a grid without images
+    cols = st.columns(3)
     for i, (investment, description) in enumerate(investment_options.items()):
-        with cols[i % 2]:
+        with cols[i % 3]:
             st.subheader(investment)
             st.write(description)
             st.button(f"Learn More about {investment}")
 
     st.write("---")
+    st.write("Here are your current investments and their returns:")
+st.write("**Stocks:** $1,500.00 | 5.00%")
+st.write("**Bonds:** $500.00 | 2.00%")
+st.write("**Real Estate:** $3,000.00 | 8.00%")
+st.write("**Average Return on Investment:** $5,000.00 | 5.00%")
 
 # ✅ Guard clause to prevent accidental execution when imported
 if __name__ == "__main__":
